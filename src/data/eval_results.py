@@ -1,11 +1,11 @@
+import sys
 import pandas as pd
 import os
-import tqdm
 
 
-def eval(dataset_name):
+def eval(dataset_name, results_path):
     eval_path = "data/test/" + dataset_name + ".csv"
-    result_path = "data/results/" + dataset_name + "/predictions.csv"
+    result_path = os.path.join(results_path, dataset_name, "predictions.csv")
     if not os.path.exists(eval_path) or not os.path.exists(result_path):
         return 0
     eval = pd.read_csv(eval_path)
@@ -18,6 +18,10 @@ def eval(dataset_name):
 
 
 def main():
+    if len(sys.argv) > 1:
+        results_path = sys.argv[1]
+    else:
+        results_path = str(input("Results path: "))
     dataset_list = [
         "ade_corpus_v2",
         "banking_77",
@@ -33,7 +37,7 @@ def main():
     ]
     accuracy_list = {}
     for dataset_name in dataset_list:
-        accuracy_list[dataset_name] = eval(dataset_name)
+        accuracy_list[dataset_name] = eval(dataset_name, results_path)
         print(dataset_name + " : " + str(accuracy_list[dataset_name]))
 
     print("overall : " + str(sum(accuracy_list.values()) / len(accuracy_list)))

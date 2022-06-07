@@ -1,0 +1,1 @@
+python src/data/eval_results.py data/results
