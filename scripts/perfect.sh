@@ -11,4 +11,4 @@
 # 1) For data_seed we sweep over [100, 13, 42, 87, 21]
 # 2) For seed we sweep over [1, 10, 100, 1000]     
 
-python src/main.py configs/perfect.json 
+CUDA_VISIBLE_DEVICES=0 python src/main.py configs/perfect.json 

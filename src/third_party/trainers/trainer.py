@@ -316,6 +316,7 @@ class BaseTrainer(Trainer):
         Returns a dictionary from labels to embedding size of shape [num_tokens, hidden_dim]"""
 
         def get_label_samples(dataset, label):
+            import ipdb; ipdb.set_trace()
             return dataset.filter(lambda example: int(example["labels"]) == label)
 
         label_to_token_centroids = {}

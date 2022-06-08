@@ -50,7 +50,7 @@ from training_args import (
     AdapterArguments,
 )
 from data.preprocessing import MLMProcessor
-from data.dataset_readers import AutoTask
+from data.tasks import AutoTask
 from data.processors import AutoProcessor
 
 # Will error if the minimal version of Transformers is not installed. Remove at your own risks.
@@ -163,10 +163,6 @@ def main():
         )
     adapter_config = get_adapter_config(adapter_args)
 
-    import ipdb
-
-    ipdb.set_trace()
-    # FIXME:
     processor = AutoProcessor.get(
         task=data_args.task,
         tokenizer=tokenizer,
@@ -376,7 +372,7 @@ def main():
     # Preprocessing the datasets.
     # First we tokenize all the texts.
     def extract_targets(examples):
-        targets = examples["label"]
+        targets = examples["Label"]
         targets = [int(target) for target in targets]
         return {"targets": targets}
 
@@ -451,15 +447,21 @@ def main():
             )
 
     data_collator = default_data_collator
-    all_datasets = {
-        "train": train_dataset,
-        "eval": eval_dataset,
-        "predict": predict_dataset,
-    }
+    all_datasets = {}
+    if training_args.do_train:
+        all_datasets["train"] = train_dataset
+    if training_args.do_eval:
+        all_datasets["eval"] = eval_dataset
+    if training_args.do_predict:
+        all_datasets["predict"] = predict_dataset
     extra_info = {k: v["extra_fields"] for k, v in all_datasets.items()}
-    train_dataset = train_dataset.remove_columns("extra_fields")
-    eval_dataset = eval_dataset.remove_columns("extra_fields")
-    predict_dataset = predict_dataset.remove_columns("extra_fields")
+
+    if training_args.do_train:
+        train_dataset = train_dataset.remove_columns("extra_fields")
+    if training_args.do_eval:
+        eval_dataset = eval_dataset.remove_columns("extra_fields")
+    if training_args.do_predict:
+        predict_dataset = predict_dataset.remove_columns("extra_fields")
 
     # Initialize our Trainer
     trainer = BaseTrainer(
