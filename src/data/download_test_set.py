@@ -270,15 +270,43 @@ def download_overruling(path):
     file.close()
 
 
+def download_terms_of_service(path):
+    """Downloads the terms of service dataset.
+
+    Args:
+        path: The path to save the dataset.
+    """
+    terms_of_service = pd.read_csv("data/terms_of_service.csv")
+    test_set = load_dataset("ought/raft", name="terms_of_service", split="test")
+
+    file = open(os.path.join(path, "terms_of_service.csv"), "w+")
+    file.writelines("ID,Label" + "\n")
+
+    for i in tqdm(range(test_set.num_rows)):
+        sentence = test_set["Sentence"][i]
+        id = test_set["ID"][i]
+
+        if terms_of_service.loc[terms_of_service.text == sentence].shape[0] == 1:
+            label = int(terms_of_service.loc[terms_of_service.text == sentence].label)
+            label_token = (
+                "potentially unfair" if label == 1 else "not potentially unfair"
+            )
+        else:
+            label_token = "null"
+
+        file.writelines(str(id) + "," + label_token + "\n")
+
+
 def main():
     path = "data/test"
     os.path.exists(path) or os.makedirs(path)
     download_ade_corpus_v2(path)
     download_banking_77(path)
     download_one_stop_english(path)
-    download_twitter_complaints(path)
+    # download_twitter_complaints(path)
     download_tweet_eval_hate(path)
     download_overruling(path)
+    download_terms_of_service(path)
 
 
 if "__main__" == __name__:
