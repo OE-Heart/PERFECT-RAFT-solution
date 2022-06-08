@@ -177,14 +177,15 @@ def download_one_stop_english(path):
 
 
 def download_twitter_complaints(path):
-    # FIXME: This dataset is not correct.
     """Downloads the twitter complaints dataset.
 
     Args:
         path: The path to save the dataset.
     """
-    twitter_complaints = load_dataset(
-        "carblacac/twitter-sentiment-analysis", name="default"
+    twitter_complaints = pd.read_csv(
+        "data/twitter_complaints.csv",
+        header=None,
+        names=["ID", "text", "label", "class"],
     )
     test_set = load_dataset("ought/raft", name="twitter_complaints", split="test")
 
@@ -195,16 +196,13 @@ def download_twitter_complaints(path):
         sentence = test_set["Tweet text"][i]
         id = test_set["ID"][i]
 
-        label_token = "null"
-        for split in ["train", "validation", "test"]:
-            if label_token != "null":
-                break
-            try:
-                index = twitter_complaints[split]["text"].index(sentence)
-                label = twitter_complaints[split]["feeling"][index]
-                label_token = "complaint" if label == 1 else "no complaint"
-            except ValueError:
-                pass
+        if twitter_complaints.loc[twitter_complaints.text == sentence].shape[0] == 1:
+            label = int(
+                twitter_complaints.loc[twitter_complaints.text == sentence].label
+            )
+            label_token = "complaint" if label == 1 else "no complaint"
+        else:
+            label_token = "null"
 
         file.writelines(str(id) + "," + label_token + "\n")
 
@@ -296,6 +294,8 @@ def download_terms_of_service(path):
 
         file.writelines(str(id) + "," + label_token + "\n")
 
+    file.close()
+
 
 def main():
     path = "data/test"
@@ -303,7 +303,7 @@ def main():
     download_ade_corpus_v2(path)
     download_banking_77(path)
     download_one_stop_english(path)
-    # download_twitter_complaints(path)
+    download_twitter_complaints(path)
     download_tweet_eval_hate(path)
     download_overruling(path)
     download_terms_of_service(path)
