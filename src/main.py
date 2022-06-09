@@ -11,6 +11,7 @@ import numpy as np
 import os
 import sys
 import functools
+from tqdm import tqdm
 
 os.environ["WANDB_DISABLED"] = "true"
 
@@ -27,12 +28,12 @@ from transformers.trainer_utils import get_last_checkpoint
 from transformers.utils import check_min_version
 from transformers.utils.versions import require_version
 
-from third_party.models import (
+from models import (
     RobertaForMaskedLM,
     RobertaConfig,
     RobertaForSequenceClassification,
 )
-from third_party.trainers import BaseTrainer
+from trainers import BaseTrainer
 from utils.utils import (
     load_json,
     get_adapter_config,
@@ -171,6 +172,8 @@ def main():
         mask_position=training_args.mask_position,
     )
 
+    verbalizers_tags = processor.get_verbalizers()
+
     verbalizers = {}
     # These tokenized verbalizers are used to inialize the embedding matrix for the extra tokens
     # added for the label embedding. If we do not have a fixed set of verbalizers, we intialize
@@ -241,6 +244,8 @@ def main():
                 functools.partial(get_max_num_verbalizers_tokens, processor=processor),
                 batched=False,
                 num_proc=data_args.preprocessing_num_workers,
+                # FIXME:
+                keep_in_memory=True,
                 load_from_cache_file=False,
                 desc="Finding the length of max verbalizer in the training set",
             )
@@ -373,7 +378,7 @@ def main():
     # First we tokenize all the texts.
     def extract_targets(examples):
         targets = examples["Label"]
-        targets = [int(target) for target in targets]
+        targets = [int(target) - 1 for target in targets]
         return {"targets": targets}
 
     if training_args.do_train:
@@ -388,6 +393,8 @@ def main():
                 batched=False,
                 num_proc=data_args.preprocessing_num_workers,
                 remove_columns=column_names,
+                # FIXME:
+                keep_in_memory=True,
                 load_from_cache_file=False,  # not data_args.overwrite_cache,
                 desc="Running tokenizer on train dataset",
             )
@@ -406,7 +413,9 @@ def main():
                 batched=True,
                 num_proc=data_args.preprocessing_num_workers,
                 remove_columns=column_names,
-                load_from_cache_file=not data_args.overwrite_cache,
+                # FIXME:
+                keep_in_memory=True,
+                load_from_cache_file=False,
                 desc="Running tokenizer on eval dataset",
             )
             eval_dataset = eval_dataset.map(
@@ -414,6 +423,8 @@ def main():
                 batched=False,
                 num_proc=data_args.preprocessing_num_workers,
                 remove_columns=column_names,
+                # FIXME:
+                keep_in_memory=True,
                 load_from_cache_file=False,  # not data_args.overwrite_cache,
                 desc="Running tokenizer on validation dataset",
             )
@@ -429,19 +440,13 @@ def main():
         with training_args.main_process_first(
             desc="prediction dataset map pre-processing"
         ):
-            predict_targets = predict_dataset.map(
-                extract_targets,
-                batched=True,
-                num_proc=data_args.preprocessing_num_workers,
-                remove_columns=column_names,
-                load_from_cache_file=not data_args.overwrite_cache,
-                desc="Running tokenizer on predict dataset",
-            )
             predict_dataset = predict_dataset.map(
                 processor,
                 batched=False,
                 num_proc=data_args.preprocessing_num_workers,
                 remove_columns=column_names,
+                # FIXME:
+                keep_in_memory=True,
                 load_from_cache_file=False,  # not data_args.overwrite_cache,
                 desc="Running tokenizer on predict dataset",
             )
@@ -454,6 +459,7 @@ def main():
         all_datasets["eval"] = eval_dataset
     if training_args.do_predict:
         all_datasets["predict"] = predict_dataset
+
     extra_info = {k: v["extra_fields"] for k, v in all_datasets.items()}
 
     if training_args.do_train:
@@ -559,31 +565,29 @@ def main():
             end = torch.cuda.Event(enable_timing=True)
             start.record()
 
-        metrics = trainer.evaluate(
-            eval_datasets=predict_dataset,
-            eval_targets=predict_targets,
-            metric_key_prefix="predict",
-        )
+        # FIXME: predict method is wrong
+        predictions = trainer.predict(predict_dataset)
+
+        predict_labels = predictions[1]
+
+        file = open(os.path.join("results", data_args.task + ".csv"), "w+")
+        file.writelines("ID,Label" + "\n")
+
+        for i in tqdm(range(raw_datasets["test"].num_rows)):
+            id = raw_datasets["test"]["ID"][i]
+
+            label = predict_labels[i]
+            label_token = verbalizers_tags[label]
+
+            file.writelines(str(id) + "," + label_token + "\n")
+
+        file.close()
 
         if training_args.compute_inference_time:
             end.record()
             torch.cuda.synchronize()  # wait for all_reduce to complete
             total_time = start.elapsed_time(end) / (1000 * 60)
             performance_metrics.update({"inference time(min)": total_time})
-
-        predict_samples = (
-            predict_dataset[0].num_rows
-            if isinstance(predict_dataset, list)
-            else predict_dataset.num_rows
-        )
-        max_predict_samples = (
-            data_args.max_predict_samples
-            if data_args.max_predict_samples is not None
-            else predict_samples
-        )
-        metrics["predict_samples"] = min(max_predict_samples, predict_samples)
-        trainer.log_metrics("predict", metrics)
-        trainer.save_metrics("predict", metrics)
 
     if (
         training_args.compute_memory

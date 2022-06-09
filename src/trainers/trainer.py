@@ -58,7 +58,7 @@ if is_torch_tpu_available():
     import torch_xla.distributed.parallel_loader as pl
 
 from utils.utils import compute_accuracy_from_losses, get_aggregation
-from third_party.models import RobertaForMaskedLM
+from models import RobertaForMaskedLM
 
 if is_fairscale_available():
     dep_version_check("fairscale")
@@ -316,7 +316,7 @@ class BaseTrainer(Trainer):
         Returns a dictionary from labels to embedding size of shape [num_tokens, hidden_dim]"""
 
         def get_label_samples(dataset, label):
-            import ipdb; ipdb.set_trace()
+            # import ipdb; ipdb.set_trace() # FIXME: REMOVE BREAKPOINT
             return dataset.filter(lambda example: int(example["labels"]) == label)
 
         label_to_token_centroids = {}
@@ -324,11 +324,13 @@ class BaseTrainer(Trainer):
             data = get_label_samples(self.train_dataset, label)
             dataloader = self.get_eval_dataloader(data)
             mask_embeds = []
+            # import ipdb; ipdb.set_trace() # FIXME: REMOVE BREAKPOINT
             for _, inputs in enumerate(dataloader):
                 batch = self._prepare_inputs(inputs)
                 with torch.no_grad():
                     mask_embeds.append(self.get_masks_embeds(model, batch))
             # Computes the averaged mask embeddings for the samples of this label.
+
             label_to_token_centroids[label] = torch.mean(
                 torch.cat(mask_embeds, dim=0), dim=0
             )
