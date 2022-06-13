@@ -290,7 +290,7 @@ class terms_of_service(AbstractProcessor):
         return [sentence, Text(text="It's"), *masks, Text(text=".")], []
 
     def get_verbalizers(self):
-        return ["potentially unfair", "not potentially unfair"]
+        return ["not potentially unfair", "potentially unfair"]
 
 
 class tweet_eval_hate(AbstractProcessor):

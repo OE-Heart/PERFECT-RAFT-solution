@@ -556,6 +556,7 @@ def main():
         trainer.log_metrics("eval", metrics)
         trainer.save_metrics("eval", metrics)
 
+    # Prediction
     if training_args.do_predict:
         logger.info("*** Predict ***")
 
@@ -565,10 +566,7 @@ def main():
             end = torch.cuda.Event(enable_timing=True)
             start.record()
 
-        # FIXME: predict method is wrong
-        predictions = trainer.predict(predict_dataset)
-
-        predict_labels = predictions[1]
+        predict_labels = trainer.predict(predict_dataset)
 
         file = open(os.path.join("results", data_args.task + ".csv"), "w+")
         file.writelines("ID,Label" + "\n")

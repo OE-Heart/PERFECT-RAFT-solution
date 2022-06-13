@@ -558,3 +558,45 @@ class BaseTrainer(Trainer):
             self.optimizer = smp.DistributedOptimizer(self.optimizer)
 
         return self.optimizer
+
+    def predict(self, predict_datasets):
+        """Prediction loop."""
+        logger.info(f"***** Running Prediction *****")
+
+        model = self._wrap_model(self.model, training=False)
+        # if full fp16 is wanted on eval and this ``evaluation`` or ``predict`` isn't called while
+        # ``train`` is running, halve it first and then put on device
+        if not self.is_in_train and self.args.fp16_full_eval:
+            model = model.half().to(self.args.device)
+
+        num_samples = (
+            predict_datasets[0].num_rows
+            if isinstance(predict_datasets, list)
+            else predict_datasets.num_rows
+        )
+        logger.info(f"  Num examples = {num_samples}")
+
+        model.eval()
+
+        dataloader = self.get_eval_dataloader(predict_datasets)
+        centroids = None
+        if self.args.prototypical_eval:
+            if self.args.label_embeddings_as_centroids:
+                centroids = self._get_per_token_train_centroids_from_label_embeddings(
+                    model
+                )
+            else:
+                centroids = self._compute_per_token_train_centroids(model)
+
+        y_hats = []
+        for _, inputs in enumerate(dataloader):
+            inputs = self._prepare_inputs(inputs)
+            with torch.no_grad():
+                if self.args.train_classifier or self.args.classifier_eval:
+                    logits = model(**inputs)["logits"]
+                else:
+                    logits = self.evaluate_pet(model, inputs, centroids=centroids)
+                y_hat = torch.argmax(logits, axis=1).cpu().detach().numpy()
+                y_hats.extend(y_hat)
+        return y_hats
+        

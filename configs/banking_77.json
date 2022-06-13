@@ -1,5 +1,5 @@
 {
-  "task": "terms_of_service",
+  "task": "banking_77",
   "max_seq_length": 256, 
   "per_device_train_batch_size": 64,
   "data_dir": "datasets_processed",
