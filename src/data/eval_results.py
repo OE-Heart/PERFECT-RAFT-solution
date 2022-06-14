@@ -5,8 +5,7 @@ import os
 
 def eval(dataset_name, results_path):
     eval_path = "data/test/" + dataset_name + ".csv"
-    result_path = "results/" + dataset_name + ".csv"
-    # result_path = os.path.join(results_path, dataset_name, "predictions.csv").
+    result_path = os.path.join(results_path, dataset_name + ".csv")
     if not os.path.exists(eval_path) or not os.path.exists(result_path):
         return 0
     eval = pd.read_csv(eval_path)
