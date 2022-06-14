@@ -10,7 +10,7 @@ ID,Label
 58,get_physical_card
 59,balance_not_updated_after_cheque_or_cash_deposit
 60,automatic_top_up
-61,reverted_card_payment
+61,reverted_card_payment?
 62,change_pin
 63,card_arrival
 64,getting_virtual_card
@@ -32,7 +32,7 @@ ID,Label
 80,pending_cash_withdrawal
 81,wrong_amount_of_cash_received
 82,pending_cash_withdrawal
-83,reverted_card_payment
+83,reverted_card_payment?
 84,atm_support
 85,card_payment_fee_charged
 86,top_up_failed
@@ -66,7 +66,7 @@ ID,Label
 114,transfer_not_received_by_recipient
 115,apple_pay_or_google_pay
 116,pending_card_payment
-117,reverted_card_payment
+117,reverted_card_payment?
 118,verify_my_identity
 119,cancel_transfer
 120,pending_top_up
@@ -182,18 +182,18 @@ ID,Label
 230,fiat_currency_support
 231,card_payment_wrong_exchange_rate
 232,topping_up_by_card
-233,reverted_card_payment
+233,reverted_card_payment?
 234,activate_my_card
 235,transfer_fee_charged
 236,top_up_by_bank_transfer_charge
 237,transfer_fee_charged
 238,transaction_charged_twice
-239,reverted_card_payment
+239,reverted_card_payment?
 240,order_physical_card
 241,pending_transfer
 242,card_arrival
 243,cash_withdrawal_not_recognised
-244,reverted_card_payment
+244,reverted_card_payment?
 245,age_limit
 246,balance_not_updated_after_cheque_or_cash_deposit
 247,balance_not_updated_after_cheque_or_cash_deposit
@@ -210,7 +210,7 @@ ID,Label
 258,declined_transfer
 259,pending_card_payment
 260,apple_pay_or_google_pay
-261,reverted_card_payment
+261,reverted_card_payment?
 262,age_limit
 263,change_pin
 264,automatic_top_up
@@ -259,7 +259,7 @@ ID,Label
 307,country_support
 308,transaction_charged_twice
 309,balance_not_updated_after_cheque_or_cash_deposit
-310,reverted_card_payment
+310,reverted_card_payment?
 311,wrong_amount_of_cash_received
 312,exchange_charge
 313,direct_debit_payment_not_recognised
@@ -307,7 +307,7 @@ ID,Label
 355,pending_transfer
 356,getting_spare_card
 357,virtual_card_not_working
-358,reverted_card_payment
+358,reverted_card_payment?
 359,verify_source_of_funds
 360,get_physical_card
 361,balance_not_updated_after_cheque_or_cash_deposit
@@ -323,7 +323,7 @@ ID,Label
 371,automatic_top_up
 372,lost_or_stolen_card
 373,getting_virtual_card
-374,reverted_card_payment
+374,reverted_card_payment?
 375,card_payment_fee_charged
 376,wrong_amount_of_cash_received
 377,pending_transfer
@@ -331,7 +331,7 @@ ID,Label
 379,verify_my_identity
 380,receiving_money
 381,edit_personal_details
-382,reverted_card_payment
+382,reverted_card_payment?
 383,exchange_via_app
 384,direct_debit_payment_not_recognised
 385,card_payment_not_recognised
@@ -375,7 +375,7 @@ ID,Label
 423,wrong_amount_of_cash_received
 424,supported_cards_and_currencies
 425,top_up_by_cash_or_cheque
-426,reverted_card_payment
+426,reverted_card_payment?
 427,card_payment_wrong_exchange_rate
 428,beneficiary_not_allowed
 429,disposable_card_limits
@@ -425,7 +425,7 @@ ID,Label
 473,automatic_top_up
 474,lost_or_stolen_phone
 475,virtual_card_not_working
-476,reverted_card_payment
+476,reverted_card_payment?
 477,top_up_limits
 478,declined_cash_withdrawal
 479,card_about_to_expire
@@ -515,7 +515,7 @@ ID,Label
 563,balance_not_updated_after_cheque_or_cash_deposit
 564,visa_or_mastercard
 565,top_up_failed
-566,reverted_card_payment
+566,reverted_card_payment?
 567,automatic_top_up
 568,pin_blocked
 569,card_arrival
@@ -547,7 +547,7 @@ ID,Label
 595,transfer_into_account
 596,request_refund
 597,card_arrival
-598,reverted_card_payment
+598,reverted_card_payment?
 599,card_payment_wrong_exchange_rate
 600,exchange_rate
 601,card_payment_fee_charged
@@ -591,14 +591,14 @@ ID,Label
 639,get_physical_card
 640,card_linking
 641,apple_pay_or_google_pay
-642,reverted_card_payment
+642,reverted_card_payment?
 643,transfer_not_received_by_recipient
 644,pending_transfer
 645,wrong_amount_of_cash_received
 646,apple_pay_or_google_pay
 647,pin_blocked
 648,getting_virtual_card
-649,reverted_card_payment
+649,reverted_card_payment?
 650,exchange_rate
 651,get_disposable_virtual_card
 652,wrong_exchange_rate_for_cash_withdrawal
@@ -677,7 +677,7 @@ ID,Label
 725,card_about_to_expire
 726,balance_not_updated_after_cheque_or_cash_deposit
 727,topping_up_by_card
-728,reverted_card_payment
+728,reverted_card_payment?
 729,order_physical_card
 730,card_not_working
 731,topping_up_by_card
@@ -689,7 +689,7 @@ ID,Label
 737,balance_not_updated_after_bank_transfer
 738,age_limit
 739,edit_personal_details
-740,reverted_card_payment
+740,reverted_card_payment?
 741,beneficiary_not_allowed
 742,extra_charge_on_statement
 743,card_arrival
@@ -923,7 +923,7 @@ ID,Label
 971,Refund_not_showing_up
 972,card_about_to_expire
 973,wrong_amount_of_cash_received
-974,reverted_card_payment
+974,reverted_card_payment?
 975,card_swallowed
 976,top_up_failed
 977,card_linking
@@ -1036,7 +1036,7 @@ ID,Label
 1084,exchange_rate
 1085,country_support
 1086,wrong_amount_of_cash_received
-1087,reverted_card_payment
+1087,reverted_card_payment?
 1088,declined_card_payment
 1089,apple_pay_or_google_pay
 1090,automatic_top_up
@@ -1049,7 +1049,7 @@ ID,Label
 1097,request_refund
 1098,wrong_exchange_rate_for_cash_withdrawal
 1099,balance_not_updated_after_cheque_or_cash_deposit
-1100,reverted_card_payment
+1100,reverted_card_payment?
 1101,terminate_account
 1102,declined_cash_withdrawal
 1103,failed_transfer
@@ -1163,7 +1163,7 @@ ID,Label
 1211,cash_withdrawal_not_recognised
 1212,balance_not_updated_after_bank_transfer
 1213,card_not_working
-1214,reverted_card_payment
+1214,reverted_card_payment?
 1215,extra_charge_on_statement
 1216,cash_withdrawal_charge
 1217,top_up_by_bank_transfer_charge
@@ -1197,7 +1197,7 @@ ID,Label
 1245,edit_personal_details
 1246,failed_transfer
 1247,change_pin
-1248,reverted_card_payment
+1248,reverted_card_payment?
 1249,verify_source_of_funds
 1250,verify_top_up
 1251,Refund_not_showing_up
@@ -1293,9 +1293,9 @@ ID,Label
 1341,declined_cash_withdrawal
 1342,top_up_limits
 1343,pin_blocked
-1344,reverted_card_payment
+1344,reverted_card_payment?
 1345,unable_to_verify_identity
-1346,reverted_card_payment
+1346,reverted_card_payment?
 1347,transfer_fee_charged
 1348,visa_or_mastercard
 1349,extra_charge_on_statement
@@ -1430,8 +1430,8 @@ ID,Label
 1478,verify_top_up
 1479,transfer_fee_charged
 1480,direct_debit_payment_not_recognised
-1481,reverted_card_payment
-1482,reverted_card_payment
+1481,reverted_card_payment?
+1482,reverted_card_payment?
 1483,transfer_not_received_by_recipient
 1484,failed_transfer
 1485,extra_charge_on_statement
@@ -1445,14 +1445,14 @@ ID,Label
 1493,supported_cards_and_currencies
 1494,card_payment_wrong_exchange_rate
 1495,exchange_charge
-1496,reverted_card_payment
+1496,reverted_card_payment?
 1497,fiat_currency_support
 1498,transaction_charged_twice
 1499,pending_card_payment
-1500,reverted_card_payment
+1500,reverted_card_payment?
 1501,pin_blocked
 1502,direct_debit_payment_not_recognised
-1503,reverted_card_payment
+1503,reverted_card_payment?
 1504,topping_up_by_card
 1505,declined_card_payment
 1506,activate_my_card
@@ -1612,7 +1612,7 @@ ID,Label
 1660,top_up_by_cash_or_cheque
 1661,card_payment_wrong_exchange_rate
 1662,visa_or_mastercard
-1663,reverted_card_payment
+1663,reverted_card_payment?
 1664,top_up_by_cash_or_cheque
 1665,card_linking
 1666,failed_transfer
@@ -1624,7 +1624,7 @@ ID,Label
 1672,unable_to_verify_identity
 1673,exchange_rate
 1674,card_about_to_expire
-1675,reverted_card_payment
+1675,reverted_card_payment?
 1676,balance_not_updated_after_cheque_or_cash_deposit
 1677,receiving_money
 1678,why_verify_identity
@@ -1693,7 +1693,7 @@ ID,Label
 1741,activate_my_card
 1742,top_up_by_card_charge
 1743,balance_not_updated_after_cheque_or_cash_deposit
-1744,reverted_card_payment
+1744,reverted_card_payment?
 1745,card_not_working
 1746,card_acceptance
 1747,declined_transfer
@@ -1760,7 +1760,7 @@ ID,Label
 1808,verify_top_up
 1809,direct_debit_payment_not_recognised
 1810,pin_blocked
-1811,reverted_card_payment
+1811,reverted_card_payment?
 1812,atm_support
 1813,card_acceptance
 1814,get_disposable_virtual_card
@@ -1780,7 +1780,7 @@ ID,Label
 1828,declined_cash_withdrawal
 1829,compromised_card
 1830,transfer_into_account
-1831,reverted_card_payment
+1831,reverted_card_payment?
 1832,activate_my_card
 1833,getting_virtual_card
 1834,card_payment_not_recognised
@@ -1824,7 +1824,7 @@ ID,Label
 1872,cancel_transfer
 1873,unable_to_verify_identity
 1874,passcode_forgotten
-1875,reverted_card_payment
+1875,reverted_card_payment?
 1876,exchange_via_app
 1877,change_pin
 1878,edit_personal_details
@@ -1842,8 +1842,8 @@ ID,Label
 1890,unable_to_verify_identity
 1891,balance_not_updated_after_bank_transfer
 1892,topping_up_by_card
-1893,reverted_card_payment
-1894,reverted_card_payment
+1893,reverted_card_payment?
+1894,reverted_card_payment?
 1895,extra_charge_on_statement
 1896,declined_transfer
 1897,top_up_by_card_charge
@@ -2144,12 +2144,12 @@ ID,Label
 2192,apple_pay_or_google_pay
 2193,request_refund
 2194,cancel_transfer
-2195,reverted_card_payment
+2195,reverted_card_payment?
 2196,beneficiary_not_allowed
 2197,activate_my_card
 2198,declined_card_payment
 2199,passcode_forgotten
-2200,reverted_card_payment
+2200,reverted_card_payment?
 2201,transfer_into_account
 2202,beneficiary_not_allowed
 2203,wrong_exchange_rate_for_cash_withdrawal
@@ -2296,7 +2296,7 @@ ID,Label
 2344,supported_cards_and_currencies
 2345,top_up_by_cash_or_cheque
 2346,direct_debit_payment_not_recognised
-2347,reverted_card_payment
+2347,reverted_card_payment?
 2348,get_disposable_virtual_card
 2349,card_linking
 2350,transfer_not_received_by_recipient
@@ -2393,7 +2393,7 @@ ID,Label
 2441,passcode_forgotten
 2442,beneficiary_not_allowed
 2443,transaction_charged_twice
-2444,reverted_card_payment
+2444,reverted_card_payment?
 2445,top_up_reverted
 2446,top_up_by_bank_transfer_charge
 2447,pending_card_payment
@@ -2404,7 +2404,7 @@ ID,Label
 2452,verify_my_identity
 2453,top_up_by_cash_or_cheque
 2454,pending_cash_withdrawal
-2455,reverted_card_payment
+2455,reverted_card_payment?
 2456,direct_debit_payment_not_recognised
 2457,card_payment_not_recognised
 2458,lost_or_stolen_phone
@@ -2418,7 +2418,7 @@ ID,Label
 2466,get_physical_card
 2467,receiving_money
 2468,edit_personal_details
-2469,reverted_card_payment
+2469,reverted_card_payment?
 2470,top_up_reverted
 2471,visa_or_mastercard
 2472,order_physical_card
@@ -2441,7 +2441,7 @@ ID,Label
 2489,why_verify_identity
 2490,card_delivery_estimate
 2491,card_payment_fee_charged
-2492,reverted_card_payment
+2492,reverted_card_payment?
 2493,topping_up_by_card
 2494,verify_source_of_funds
 2495,direct_debit_payment_not_recognised
@@ -2477,7 +2477,7 @@ ID,Label
 2525,top_up_reverted
 2526,cash_withdrawal_not_recognised
 2527,change_pin
-2528,reverted_card_payment
+2528,reverted_card_payment?
 2529,card_linking
 2530,age_limit
 2531,activate_my_card
@@ -2493,7 +2493,7 @@ ID,Label
 2541,exchange_rate
 2542,card_acceptance
 2543,pending_card_payment
-2544,reverted_card_payment
+2544,reverted_card_payment?
 2545,top_up_failed
 2546,wrong_amount_of_cash_received
 2547,transfer_not_received_by_recipient
@@ -2523,7 +2523,7 @@ ID,Label
 2571,declined_cash_withdrawal
 2572,extra_charge_on_statement
 2573,failed_transfer
-2574,reverted_card_payment
+2574,reverted_card_payment?
 2575,transfer_into_account
 2576,card_arrival
 2577,fiat_currency_support
@@ -2538,7 +2538,7 @@ ID,Label
 2586,edit_personal_details
 2587,top_up_failed
 2588,disposable_card_limits
-2589,reverted_card_payment
+2589,reverted_card_payment?
 2590,visa_or_mastercard
 2591,supported_cards_and_currencies
 2592,pending_top_up
@@ -2615,7 +2615,7 @@ ID,Label
 2663,why_verify_identity
 2664,card_payment_not_recognised
 2665,getting_virtual_card
-2666,reverted_card_payment
+2666,reverted_card_payment?
 2667,transfer_into_account
 2668,failed_transfer
 2669,topping_up_by_card
@@ -2686,7 +2686,7 @@ ID,Label
 2734,exchange_rate
 2735,exchange_rate
 2736,cancel_transfer
-2737,reverted_card_payment
+2737,reverted_card_payment?
 2738,card_linking
 2739,receiving_money
 2740,transfer_not_received_by_recipient
@@ -2883,7 +2883,7 @@ ID,Label
 2931,transfer_into_account
 2932,age_limit
 2933,card_payment_wrong_exchange_rate
-2934,reverted_card_payment
+2934,reverted_card_payment?
 2935,visa_or_mastercard
 2936,balance_not_updated_after_bank_transfer
 2937,transfer_timing
@@ -2904,7 +2904,7 @@ ID,Label
 2952,get_disposable_virtual_card
 2953,passcode_forgotten
 2954,Refund_not_showing_up
-2955,reverted_card_payment
+2955,reverted_card_payment?
 2956,card_linking
 2957,top_up_failed
 2958,wrong_exchange_rate_for_cash_withdrawal
@@ -2986,7 +2986,7 @@ ID,Label
 3034,transaction_charged_twice
 3035,card_payment_fee_charged
 3036,cash_withdrawal_charge
-3037,reverted_card_payment
+3037,reverted_card_payment?
 3038,card_delivery_estimate
 3039,wrong_exchange_rate_for_cash_withdrawal
 3040,balance_not_updated_after_cheque_or_cash_deposit
@@ -3009,7 +3009,7 @@ ID,Label
 3057,exchange_via_app
 3058,cash_withdrawal_not_recognised
 3059,why_verify_identity
-3060,reverted_card_payment
+3060,reverted_card_payment?
 3061,pending_card_payment
 3062,verify_top_up
 3063,request_refund
@@ -3021,7 +3021,7 @@ ID,Label
 3069,balance_not_updated_after_cheque_or_cash_deposit
 3070,cancel_transfer
 3071,balance_not_updated_after_bank_transfer
-3072,reverted_card_payment
+3072,reverted_card_payment?
 3073,transfer_not_received_by_recipient
 3074,get_physical_card
 3075,change_pin
@@ -3048,7 +3048,7 @@ ID,Label
 3096,passcode_forgotten
 3097,why_verify_identity
 3098,transfer_fee_charged
-3099,reverted_card_payment
+3099,reverted_card_payment?
 3100,verify_source_of_funds
 3101,pending_cash_withdrawal
 3102,wrong_amount_of_cash_received
@@ -3158,7 +3158,7 @@ ID,Label
 3206,pending_cash_withdrawal
 3207,transaction_charged_twice
 3208,cash_withdrawal_not_recognised
-3209,reverted_card_payment
+3209,reverted_card_payment?
 3210,top_up_reverted
 3211,country_support
 3212,balance_not_updated_after_bank_transfer
@@ -3250,12 +3250,12 @@ ID,Label
 3298,Refund_not_showing_up
 3299,cash_withdrawal_charge
 3300,transfer_timing
-3301,reverted_card_payment
+3301,reverted_card_payment?
 3302,cash_withdrawal_not_recognised
 3303,declined_cash_withdrawal
 3304,activate_my_card
 3305,exchange_charge
-3306,reverted_card_payment
+3306,reverted_card_payment?
 3307,activate_my_card
 3308,cash_withdrawal_charge
 3309,cancel_transfer
@@ -3466,7 +3466,7 @@ ID,Label
 3514,card_delivery_estimate
 3515,get_physical_card
 3516,top_up_by_card_charge
-3517,reverted_card_payment
+3517,reverted_card_payment?
 3518,visa_or_mastercard
 3519,card_payment_wrong_exchange_rate
 3520,supported_cards_and_currencies
@@ -3489,7 +3489,7 @@ ID,Label
 3537,virtual_card_not_working
 3538,card_about_to_expire
 3539,card_payment_not_recognised
-3540,reverted_card_payment
+3540,reverted_card_payment?
 3541,card_about_to_expire
 3542,cancel_transfer
 3543,receiving_money
@@ -3656,7 +3656,7 @@ ID,Label
 3704,supported_cards_and_currencies
 3705,card_not_working
 3706,card_delivery_estimate
-3707,reverted_card_payment
+3707,reverted_card_payment?
 3708,contactless_not_working
 3709,visa_or_mastercard
 3710,card_not_working
@@ -3902,7 +3902,7 @@ ID,Label
 3950,top_up_by_card_charge
 3951,passcode_forgotten
 3952,declined_cash_withdrawal
-3953,reverted_card_payment
+3953,reverted_card_payment?
 3954,get_physical_card
 3955,supported_cards_and_currencies
 3956,pin_blocked
@@ -3957,7 +3957,7 @@ ID,Label
 4005,supported_cards_and_currencies
 4006,pending_cash_withdrawal
 4007,top_up_by_bank_transfer_charge
-4008,reverted_card_payment
+4008,reverted_card_payment?
 4009,exchange_charge
 4010,topping_up_by_card
 4011,pending_top_up
@@ -4076,7 +4076,7 @@ ID,Label
 4124,top_up_by_card_charge
 4125,declined_transfer
 4126,transfer_not_received_by_recipient
-4127,reverted_card_payment
+4127,reverted_card_payment?
 4128,compromised_card
 4129,automatic_top_up
 4130,top_up_reverted
@@ -4114,7 +4114,7 @@ ID,Label
 4162,cash_withdrawal_not_recognised
 4163,pin_blocked
 4164,exchange_rate
-4165,reverted_card_payment
+4165,reverted_card_payment?
 4166,declined_card_payment
 4167,transaction_charged_twice
 4168,order_physical_card
@@ -4154,7 +4154,7 @@ ID,Label
 4202,cancel_transfer
 4203,card_about_to_expire
 4204,cash_withdrawal_not_recognised
-4205,reverted_card_payment
+4205,reverted_card_payment?
 4206,direct_debit_payment_not_recognised
 4207,automatic_top_up
 4208,card_payment_wrong_exchange_rate
@@ -4169,7 +4169,7 @@ ID,Label
 4217,top_up_reverted
 4218,order_physical_card
 4219,activate_my_card
-4220,reverted_card_payment
+4220,reverted_card_payment?
 4221,age_limit
 4222,contactless_not_working
 4223,pending_cash_withdrawal
@@ -4231,7 +4231,7 @@ ID,Label
 4279,top_up_by_card_charge
 4280,top_up_by_bank_transfer_charge
 4281,card_payment_not_recognised
-4282,reverted_card_payment
+4282,reverted_card_payment?
 4283,card_payment_wrong_exchange_rate
 4284,order_physical_card
 4285,card_payment_wrong_exchange_rate
@@ -4392,7 +4392,7 @@ ID,Label
 4440,unable_to_verify_identity
 4441,lost_or_stolen_phone
 4442,card_linking
-4443,reverted_card_payment
+4443,reverted_card_payment?
 4444,pending_transfer
 4445,beneficiary_not_allowed
 4446,pin_blocked
@@ -4479,7 +4479,7 @@ ID,Label
 4527,top_up_by_card_charge
 4528,passcode_forgotten
 4529,receiving_money
-4530,reverted_card_payment
+4530,reverted_card_payment?
 4531,card_acceptance
 4532,exchange_rate
 4533,verify_top_up
@@ -4595,7 +4595,7 @@ ID,Label
 4643,get_physical_card
 4644,pending_transfer
 4645,balance_not_updated_after_cheque_or_cash_deposit
-4646,reverted_card_payment
+4646,reverted_card_payment?
 4647,extra_charge_on_statement
 4648,Refund_not_showing_up
 4649,fiat_currency_support
@@ -4633,7 +4633,7 @@ ID,Label
 4681,failed_transfer
 4682,extra_charge_on_statement
 4683,balance_not_updated_after_cheque_or_cash_deposit
-4684,reverted_card_payment
+4684,reverted_card_payment?
 4685,transfer_not_received_by_recipient
 4686,apple_pay_or_google_pay
 4687,failed_transfer
@@ -4654,7 +4654,7 @@ ID,Label
 4702,top_up_limits
 4703,transfer_timing
 4704,verify_top_up
-4705,reverted_card_payment
+4705,reverted_card_payment?
 4706,pending_cash_withdrawal
 4707,failed_transfer
 4708,card_about_to_expire
@@ -4671,11 +4671,11 @@ ID,Label
 4719,cancel_transfer
 4720,compromised_card
 4721,balance_not_updated_after_bank_transfer
-4722,reverted_card_payment
+4722,reverted_card_payment?
 4723,failed_transfer
 4724,virtual_card_not_working
 4725,direct_debit_payment_not_recognised
-4726,reverted_card_payment
+4726,reverted_card_payment?
 4727,fiat_currency_support
 4728,top_up_by_card_charge
 4729,top_up_by_card_charge
@@ -4704,7 +4704,7 @@ ID,Label
 4752,direct_debit_payment_not_recognised
 4753,balance_not_updated_after_bank_transfer
 4754,declined_card_payment
-4755,reverted_card_payment
+4755,reverted_card_payment?
 4756,transfer_timing
 4757,transfer_not_received_by_recipient
 4758,request_refund
@@ -4717,7 +4717,7 @@ ID,Label
 4765,request_refund
 4766,exchange_charge
 4767,pending_top_up
-4768,reverted_card_payment
+4768,reverted_card_payment?
 4769,extra_charge_on_statement
 4770,Refund_not_showing_up
 4771,automatic_top_up
@@ -4747,7 +4747,7 @@ ID,Label
 4795,country_support
 4796,pending_card_payment
 4797,wrong_exchange_rate_for_cash_withdrawal
-4798,reverted_card_payment
+4798,reverted_card_payment?
 4799,transfer_not_received_by_recipient
 4800,extra_charge_on_statement
 4801,top_up_reverted
@@ -4785,7 +4785,7 @@ ID,Label
 4833,change_pin
 4834,lost_or_stolen_phone
 4835,supported_cards_and_currencies
-4836,reverted_card_payment
+4836,reverted_card_payment?
 4837,top_up_reverted
 4838,transfer_fee_charged
 4839,request_refund
@@ -4837,7 +4837,7 @@ ID,Label
 4885,top_up_by_cash_or_cheque
 4886,card_payment_fee_charged
 4887,card_about_to_expire
-4888,reverted_card_payment
+4888,reverted_card_payment?
 4889,pending_top_up
 4890,transaction_charged_twice
 4891,top_up_by_cash_or_cheque
@@ -4944,8 +4944,8 @@ ID,Label
 4992,cash_withdrawal_charge
 4993,visa_or_mastercard
 4994,card_acceptance
-4995,reverted_card_payment
-4996,reverted_card_payment
+4995,reverted_card_payment?
+4996,reverted_card_payment?
 4997,unable_to_verify_identity
 4998,Refund_not_showing_up
 4999,request_refund
