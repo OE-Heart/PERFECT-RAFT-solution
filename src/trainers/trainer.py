@@ -599,4 +599,3 @@ class BaseTrainer(Trainer):
                 y_hat = torch.argmax(logits, axis=1).cpu().detach().numpy()
                 y_hats.extend(y_hat)
         return y_hats
-        

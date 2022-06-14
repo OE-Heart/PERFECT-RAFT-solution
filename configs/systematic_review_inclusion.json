@@ -1,5 +1,5 @@
 {
-  "task": "tweet_eval_hate",
+  "task": "systematic_review_inclusion",
   "max_seq_length": 256, 
   "per_device_train_batch_size": 64,
   "data_dir": "datasets_processed",

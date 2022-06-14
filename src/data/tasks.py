@@ -27,9 +27,11 @@ class RAFT(abc.ABC):
 
     def split_datasets(self, datasets):
         shuffled_train = datasets["train"].shuffle(seed=self.data_seed)
-        datasets["train"] = shuffled_train.select([i for i in range(25)])
+        datasets["train"] = shuffled_train.select(
+            [i for i in range(shuffled_train.num_rows // 2)]
+        )
         datasets["validation"] = shuffled_train.select(
-            [i for i in range(25, shuffled_train.num_rows)]
+            [i for i in range(shuffled_train.num_rows // 2, shuffled_train.num_rows)]
         )
         return datasets
 

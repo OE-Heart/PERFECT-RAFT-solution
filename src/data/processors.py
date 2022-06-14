@@ -260,15 +260,63 @@ class overruling(AbstractProcessor):
 
 
 class semiconductor_org_types(AbstractProcessor):
-    pass
+    name = "semiconductor_org_types"
+
+    def get_classification_parts(self, example):
+        return example["Paper title"], example["Organization name"]
+
+    def get_sentence_parts(self, example, mask_length):
+        if not self.with_pattern:
+            return [Text(text=example["Paper title"], shortenable=True)] + [
+                Text(text=example["Organization name"], shortenable=True)
+            ] + mask_length * [Text(text=self.mask_token)], []
+        return self.get_prompt_parts(example, mask_length)
+
+    def get_prompt_parts(self, example, mask_length):
+        pass
+
+    def get_verbalizers(self):
+        return ["company", "research institute", "university"]
 
 
 class systematic_review_inclusion(AbstractProcessor):
-    pass
+    name = "systematic_review_inclusion"
+
+    def get_classification_parts(self, example):
+        return example["Title"], example["Abstract"]
+
+    def get_sentence_parts(self, example, mask_length):
+        if not self.with_pattern:
+            return [Text(text=example["Title"], shortenable=True)] + [
+                Text(text=example["Abstract"], shortenable=True)
+            ] + mask_length * [Text(text=self.mask_token)], []
+        return self.get_prompt_parts(example, mask_length)
+
+    def get_prompt_parts(self, example, mask_length):
+        pass
+
+    def get_verbalizers(self):
+        return ["included", "not included"]
 
 
 class tai_safety_research(AbstractProcessor):
-    pass
+    name = "tai_safety_research"
+
+    def get_classification_parts(self, example):
+        return example["Title"], example["Abstract Note"]
+
+    def get_sentence_parts(self, example, mask_length):
+        if not self.with_pattern:
+            return [Text(text=example["Title"], shortenable=True)] + [
+                Text(text=example["Abstract Note"], shortenable=True)
+            ] + mask_length * [Text(text=self.mask_token)], []
+        return self.get_prompt_parts(example, mask_length)
+
+    def get_prompt_parts(self, example, mask_length):
+        pass
+
+    def get_verbalizers(self):
+        return ["TAI safety research", "not TAI safety research"]
 
 
 class terms_of_service(AbstractProcessor):
